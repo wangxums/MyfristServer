@@ -1,0 +1,41 @@
+<html>
+	<meta charset="utf-8">
+	<head><title>添加</title></head>
+	<body>
+		<input type="text" placeholder ="输入ID" name="id"></input></br>
+		<input type="text" placeholder="输入书名" name="name"></input></br>
+		<input type="text" placeholder="作者名字" name="autor"></input></br>
+		<input type="text" placeholder="简介" name="intro"></input></br>
+		<input type="button" value="提交" id="btn"></input>
+		<script src="/MSGB/web/jquery.min.js"></script>
+		<script language="javascript">
+			$(document).ready(function(){
+				// window.location.href="http://localhost:8088/MSGB/public/index.php/index/";
+			})
+			$("#btn").click(function(){
+				var id = ($('input[name = "id"]').val());
+				var name = ($('input[name = "name"]').val());
+				var autor = ($('input[name = "autor"]').val());
+				var intro = ($('input[name = "intro"]').val());
+				$.ajax({
+					type:'POST',
+					datatype:'JSON',
+					data:{
+						"id":id,
+						"name":name,
+						"autor":autor,
+						"intro":intro,
+					},
+					url:"http://localhost:8088/MSGB/public/index.php/index/index/addbook",
+					success:function(result){
+						console.log(result);
+					},
+					error:function(XMLHttpRequest,textstatus,errorThrown){
+						console.log(errorThrown);
+					},
+				});
+			});
+		</script>
+	</body>
+	
+</html>
